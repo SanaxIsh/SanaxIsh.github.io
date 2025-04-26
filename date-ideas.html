@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Date Night Login</title>
+  <title>Date Ideas</title>
   <style>
     body {
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      justify-content: center;
+      min-height: 100vh;
       margin: 0;
+      background-color: #ffe4e1;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       overflow: hidden;
       position: relative;
@@ -56,75 +56,92 @@
         opacity: 0;
       }
     }
-    .login-container {
+    .container {
       background: white;
       padding: 2rem;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       text-align: center;
       width: 320px;
       z-index: 1;
-      animation: fadeIn 1s ease-in;
     }
-    .login-container h2 {
+    h1 {
       margin-bottom: 1rem;
       color: #ff69b4;
-      font-size: 2rem;
     }
-    .login-container input[type="password"] {
-      width: 90%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
+    .queue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .queue-item {
+      background-color: #ffb6c1;
+      margin: 10px 0;
+      padding: 10px 20px;
+      border-radius: 15px;
+      width: 80%;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: popin 0.5s ease forwards;
+    }
+    form {
+      margin-top: 1rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
       border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 1rem;
+      border-radius: 5px;
+      width: 70%;
+      margin-right: 5px;
     }
-    .login-container button {
-      width: 100%;
-      padding: 0.75rem;
-      border: none;
+    button {
+      padding: 0.5rem 1rem;
       background-color: #ff69b4;
+      border: none;
+      border-radius: 5px;
       color: white;
-      border-radius: 10px;
-      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    .login-container button:hover {
+    button:hover {
       background-color: #ff1493;
     }
-    #error-message {
-      margin-top: 1rem;
-      color: red;
-      font-weight: bold;
-      display: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
+    @keyframes popin {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="login-container" id="login-container">
-    <h2> Date Night Login </h2>
-    <form id="login-form">
-      <input type="password" id="password" placeholder="Enter the secret word..." required>
-      <button type="submit">Unlock</button>
+  <div class="container">
+    <h1>Date Idea Queue</h1>
+    <form id="idea-form">
+      <input type="text" id="new-idea" placeholder="Add your idea" required>
+      <button type="submit">Add</button>
     </form>
-    <p id="error-message">Incorrect password. Try again!</p>
+    <div class="queue" id="queue">
+      <div class="queue-item">Picnic in the park</div>
+      <div class="queue-item">Movie night at home</div>
+      <div class="queue-item">Hiking adventure</div>
+      <div class="queue-item">Visit a museum</div>
+      <div class="queue-item">Cooking a new recipe together</div>
+    </div>
   </div>
 
   <script>
-    const correctPassword = "IloveBhindi";
+    const form = document.getElementById('idea-form');
+    const queue = document.getElementById('queue');
 
-    document.getElementById('login-form').addEventListener('submit', function(event) {
+    form.addEventListener('submit', function(event) {
       event.preventDefault();
-      const passwordInput = document.getElementById('password').value;
-      if (passwordInput === correctPassword) {
-        window.location.href = "date-ideas.html";
-      } else {
-        document.getElementById('error-message').style.display = 'block';
+      const input = document.getElementById('new-idea');
+      const newIdea = input.value.trim();
+      if (newIdea) {
+        const newItem = document.createElement('div');
+        newItem.className = 'queue-item';
+        newItem.textContent = newIdea;
+        queue.appendChild(newItem);
+        input.value = '';
       }
     });
 
