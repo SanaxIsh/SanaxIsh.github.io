@@ -4,113 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Date Ideas</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #ffe4e1;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      overflow: hidden;
-      position: relative;
-    }
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #ff69b4;
-      transform: rotate(45deg);
-      animation: float 10s linear infinite;
-      opacity: 0.7;
-    }
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #ff69b4;
-      border-radius: 50%;
-    }
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(45deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(45deg);
-        opacity: 0;
-      }
-    }
-    .container {
-      background: white;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      width: 320px;
-      z-index: 1;
-    }
-    h1 {
-      margin-bottom: 1rem;
-      color: #ff69b4;
-    }
-    .queue {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 1rem;
-    }
-    .queue-item {
-      background-color: #ffb6c1;
-      margin: 10px 0;
-      padding: 10px 20px;
-      border-radius: 15px;
-      width: 80%;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      animation: popin 0.5s ease forwards;
-    }
-    form {
-      margin-top: 1rem;
-    }
-    input[type="text"] {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 70%;
-      margin-right: 5px;
-    }
-    button {
-      padding: 0.5rem 1rem;
-      background-color: #ff69b4;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #ff1493;
-    }
-    @keyframes popin {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -120,11 +14,11 @@
       <button type="submit">Add</button>
     </form>
     <div class="queue" id="queue">
-      <div class="queue-item">Picnic in the park</div>
-      <div class="queue-item">Movie night at home</div>
-      <div class="queue-item">Hiking adventure</div>
-      <div class="queue-item">Visit a museum</div>
-      <div class="queue-item">Cooking a new recipe together</div>
+      <div class="queue-item">Picnic under the stars</div>
+      <div class="queue-item">Stargazing road trip</div>
+      <div class="queue-item">Cozy cafe hopping</div>
+      <div class="queue-item">Visit a planetarium</div>
+      <div class="queue-item">DIY art night at home</div>
     </div>
   </div>
 
@@ -145,7 +39,6 @@
       }
     });
 
-    // Create floating hearts
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
